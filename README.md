@@ -1,0 +1,2 @@
+# HexStrategy
+ Hexagonal strategy game.
