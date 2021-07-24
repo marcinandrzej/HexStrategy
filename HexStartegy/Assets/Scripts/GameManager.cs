@@ -13,7 +13,8 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
+    public GameObject playerPrefab = null;
+    
     #region PUBLIC VARIABLES
     
     [Header("Game Status")] // Easy info in what state of the game we are
