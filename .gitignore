@@ -35,3 +35,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+HexStartegy/.idea
+HexStartegy/Logs
+HexStartegy/Packages/packages-lock.json
