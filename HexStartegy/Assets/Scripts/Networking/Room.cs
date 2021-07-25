@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using WebSocketSharp;
@@ -13,7 +14,8 @@ public class Room : MonoBehaviour
     public Text lobbyNameText = null;
     public Text playerAmountText = null;
     public Text playerNameText = null;
-    
+
+    public TMP_Text lobbyNameGroundField = null;
     [SerializeField] private GameObject lobbyAnimations  = null;
     [SerializeField] private List<GameObject> spawnPoint;
     private void Awake()
@@ -37,6 +39,7 @@ public class Room : MonoBehaviour
         
         Byte playersNumber = Byte.Parse(playerAmountText.text);
         NetworkManager.Instance.HostLobby(lobbyNameText.text, playersNumber);
+        lobbyNameGroundField.text = lobbyNameText.text;
     }
 
     public void SpawnPlayer(Player newPlayer = null)

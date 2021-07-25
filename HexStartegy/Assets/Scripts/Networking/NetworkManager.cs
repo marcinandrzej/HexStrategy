@@ -52,4 +52,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         room.SpawnPlayer(newPlayer);
     }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
 }
