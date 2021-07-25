@@ -4,11 +4,18 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
+public enum Kingdoms
+{
+    Vikings,
+    Samurais,
+    Spartans
+}
 public class PlayerManager : MonoBehaviour
 {
     public static GameObject localPlayerInstance;
-    
+    public Kingdoms playerKingdom;
     [HideInInspector] public PhotonView photonView;
+    
     private PlayerUI _playerUI;
     private void Awake()
     {
@@ -25,5 +32,10 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         _playerUI.SetTarget(this);
+    }
+
+    public void SetKingdom(Kingdoms kingdom)
+    {
+        playerKingdom = kingdom;
     }
 }
