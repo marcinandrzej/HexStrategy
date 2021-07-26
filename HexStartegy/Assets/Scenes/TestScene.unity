@@ -170,7 +170,6 @@ MonoBehaviour:
   gridWidth: 30
   gridHeight: 30
   hexOuterRadius: 0.6
-  hexInnerRadius: 0
 --- !u!1 &1520456259
 GameObject:
   m_ObjectHideFlags: 0
