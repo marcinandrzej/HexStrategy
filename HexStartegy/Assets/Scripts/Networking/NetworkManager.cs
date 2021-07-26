@@ -11,7 +11,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public static NetworkManager Instance;
     public UnityEvent onConnectedToRoom;
-    [SerializeField] private Room room;
+    public Room room;
 
     private void Awake()
     {

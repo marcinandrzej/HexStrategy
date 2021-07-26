@@ -5,16 +5,18 @@ using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Hashtable = System.Collections.Hashtable;
 
 public enum Kingdoms
 {
     Vikings,
-    Samurais,
+    Barbarians,
     Spartans
 }
 public class PlayerManager : MonoBehaviour
 {
+    ExitGames.Client.Photon.Hashtable customProperty = new ExitGames.Client.Photon.Hashtable();
     public static PlayerManager localPlayerInstance;
     public Kingdoms playerKingdom;
     [HideInInspector] public PhotonView photonView;
@@ -41,17 +43,13 @@ public class PlayerManager : MonoBehaviour
     {
         playerKingdom = kingdom;
         
-        if (photonView.Owner.CustomProperties.ContainsKey("Kingdom"))
-        {
-            photonView.Owner.CustomProperties["Kingdom"] = kingdom;
-        }
-        else
-        {
-            ExitGames.Client.Photon.Hashtable customProperty = new ExitGames.Client.Photon.Hashtable();
-            customProperty.Add("Kingdom", kingdom);
-            photonView.Owner.SetCustomProperties(customProperty, null, null);
-        }
+        customProperty["Kingdom"] = kingdom;
+        // sync to players
+        PhotonNetwork.LocalPlayer.SetCustomProperties(customProperty, null, null);
+    }
 
-        Debug.Log("Player: " + photonView.Owner.NickName + " have choosen: " + kingdom.ToString());
+    private void OnMouseDown()
+    {
+        Debug.Log(PhotonNetwork.LocalPlayer.CustomProperties["Kingdom"]);
     }
 }
